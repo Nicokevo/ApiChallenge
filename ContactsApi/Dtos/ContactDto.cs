@@ -1,13 +1,11 @@
-﻿using Castle.Components.DictionaryAdapter;
-using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations.Schema;
-using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 
-namespace ContactsApi.Models
+namespace ContactsApi.Dtos
 {
-    public class Contact
+    public class ContactDto
     {
+        
 
         public int Id { get; set; }
         public string? FirstName { get; set; }
@@ -19,8 +17,9 @@ namespace ContactsApi.Models
         public string? WorkPhoneNumber { get; set; }
         public string? PersonalPhoneNumber { get; set; }
         public string? Address { get; set; }
-        public string? City { get; set; }
-
-
+     
     }
 }
+
+
+

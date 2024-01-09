@@ -10,8 +10,8 @@ namespace ContactsApi.Repositories
         Task Create(T entity);
         Task Update(T entity);
         Task Delete(int id);
-        Task<IEnumerable<T>> SearchByEmailOrPhone(string searchTerm);
-        Task<IEnumerable<T>> GetByLocation(string state, string city);
+      
     }
+
 }
 
