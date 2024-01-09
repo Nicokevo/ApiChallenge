@@ -26,6 +26,7 @@ public class ContactService : IContactService
 
     }
 
+
     public async Task<bool> ContactExistsWithSameName(int contactId, string? firstName, string? lastName)
     {
         return await _unitOfWork.ContactRepository.ContactExistsWithSameName(contactId, firstName, lastName);

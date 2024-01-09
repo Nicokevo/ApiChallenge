@@ -29,6 +29,7 @@ public class ContactController : ControllerBase
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
+
     [HttpGet]
     public async Task<IActionResult> GetAllContacts()
     {
@@ -193,8 +194,8 @@ public class ContactController : ControllerBase
     {
         try
         {
-            string estadoNormalizado = NormalizeAndLowercase(state);
-            var contacts = await _contactService.SearchContactsByState(estadoNormalizado);
+            string stateNormalize = NormalizeAndLowercase(state);
+            var contacts = await _contactService.SearchContactsByState(stateNormalize);
             return Ok(contacts);
         }
         catch (Exception ex)
@@ -226,14 +227,13 @@ public class ContactController : ControllerBase
     }
 
 
-
-
     [HttpGet("city")]
     public async Task<IActionResult> SearchContactsByCity([FromQuery] string city)
     {
         try
         {
-            var contacts = await _contactService.SearchContactsByCity(city);
+            string cityNormalize = NormalizeAndLowercase(city);
+            var contacts = await _contactService.SearchContactsByCity(cityNormalize);
             return Ok(contacts);
         }
         catch (Exception ex)
@@ -249,7 +249,10 @@ public class ContactController : ControllerBase
     {
         try
         {
-            var contacts = await _contactService.GetContactsByLocation(state, city);
+            string stateNormalize = NormalizeAndLowercase(state);
+            string cityNormalize = NormalizeAndLowercase(city);
+         
+            var contacts = await _contactService.GetContactsByLocation(stateNormalize, cityNormalize);
             return Ok(contacts);
         }
         catch (Exception ex)
